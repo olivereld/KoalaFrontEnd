@@ -1,10 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './register/register.component';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [
   { path: '', component: RegisterComponent },
+  { path: 'users', component: UsersComponent },
   //{ path: 'path/:routeParam', component: MyComponent },
   //{ path: 'staticPath', component: ... },
   //{ path: '**', component: ... },

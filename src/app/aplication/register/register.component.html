@@ -2,8 +2,7 @@
 <div class="container-fluid text-center">
   <div class="row justify-content-center">
       <div class="col-md-12">          
-              <form class="form-horizontal" method="post">
-                  <fieldset>
+              <form class="form" method="post">                  
                       <legend class="text-center header">Registrar empleado</legend>
 
                       <div class="form-group">
@@ -49,17 +48,25 @@
 
                       <div class="form-group">
                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <input id="lname" name="name" type="text" placeholder="Linkedin" class="form-control">
                         </div>
                       </div>
+
+                        <div class="form-group">
+
+                            <div class="col-md-12">
+                                <label class="form-label" for="customFile">Cargar Imagen de perfil</label>
+                                <input type="file" class="form-control" id="customFile" />
+                            </div>
+                            
+                        </div>
 
                       <div class="form-group">
                           <div class="col-md-12 text-center">
                               <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                           </div>
-                      </div>
-                  </fieldset>
+                      </div>                  
               </form>
           </div>
       
