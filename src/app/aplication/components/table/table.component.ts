@@ -1,10 +1,11 @@
-import {AfterViewInit, Component, ViewChild,OnInit} from '@angular/core';
+import {AfterViewInit, Component, ViewChild,OnInit, Output,EventEmitter} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { UsersService } from '../../services/users.service';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-table',
@@ -15,7 +16,9 @@ export class TableComponent implements OnInit {
 
   displayedColumns: string[] = ['fullname', 'work', 'phone','acciones'];
   dataSource:any;
+  @Output() editUser = new EventEmitter();
   isLoaded=false;
+  userData:any;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -64,6 +67,10 @@ export class TableComponent implements OnInit {
 
   checkDetail(id:string){
     this.router.navigate([`/${id}`]);
+  }
+
+  editUserNow(user:any){
+    this.editUser.emit(user)
   }
 
 }

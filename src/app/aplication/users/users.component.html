@@ -16,5 +16,13 @@
     </div>
 </div>
 
-<app-table *ngIf="!isRegister" ></app-table>
+<div class="content-user" *ngIf="!isRegister">
+  <div class="item item-1">
+    <app-edit [userData]="userData"></app-edit>
+  </div>
+  <div class="item item-2">
+    <app-table (editUser)="seteditionUser($event)"  ></app-table>
+  </div>
+</div>
+
 <app-register *ngIf="isRegister" (loading)="switchLoading()" (goBack)="isRegister = false"></app-register>

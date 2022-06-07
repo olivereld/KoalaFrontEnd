@@ -10,6 +10,16 @@ import { TablePreviewModal } from '../modals/table-preview/table-preview.modal';
 export class UsersComponent implements OnInit {
   isRegister = false;
   isLoading = false;
+  userData:any = {
+    fullname:'oliver Grillet',
+    img:'',
+    work:'Programador',
+    phone:'12412341231',
+    email:'olivereldd@gmail.com',
+    web:'https://koala.com',
+
+
+  };
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -25,6 +35,10 @@ export class UsersComponent implements OnInit {
 
   goBack(){
     this.isRegister = false;
+  }
+
+  seteditionUser(event:any){
+    this.userData = event;
   }
 
 }

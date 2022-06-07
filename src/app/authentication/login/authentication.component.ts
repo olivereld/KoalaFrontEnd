@@ -3,7 +3,8 @@ import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.component.service';
-
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { bounceIn } from 'ng-animate';
 enum Colors {
   primary = 'primary',
   accent = 'accent',
@@ -13,9 +14,13 @@ enum Colors {
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  styleUrls: ['./authentication.component.scss'],
+  animations:[
+    trigger('bounceIn', [transition('* => *', useAnimation(bounceIn))])
+  ]
 })
 export class AuthenticationComponent implements OnInit {
+  bounceIn: any;
   loading:boolean = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';

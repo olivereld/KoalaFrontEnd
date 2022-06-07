@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8" *ngIf="isLoaded">
+<div class="table-content mat-elevation-z8" *ngIf="isLoaded">
   <table mat-table [dataSource]="dataSource">
 
     <!-- Name Column -->
@@ -31,7 +31,7 @@
             <mat-icon>visibility</mat-icon>
             <span>Detalles</span>
           </button>
-          <button mat-menu-item>
+          <button (click)="editUserNow(element)" mat-menu-item>
             <mat-icon>edit</mat-icon>
             <span>Editar</span>
           </button>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AplicationRoutingModule } from './aplication.routing';
-import {MatDialogModule} from '@angular/material/dialog'; 
+import { MatDialogModule} from '@angular/material/dialog'; 
 import { MatButtonModule } from '@angular/material/button';
 import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
@@ -20,10 +20,12 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { SharedModule } from '../shared/shared.module';
 import { FullnamePipe } from '../pipes/fullname.pipe';
 import { MatMenuModule } from '@angular/material/menu';
+import { EditComponent } from './components/edit/edit.component';
 @NgModule({
   declarations: [
     UsersComponent, 
     TableComponent,
+    EditComponent,
     FullnamePipe,
     RegisterComponent],
   imports: [ 

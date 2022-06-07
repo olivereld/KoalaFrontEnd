@@ -12,15 +12,7 @@
   color:white;
   background-color: #051a6b;
 }
-.example-header-image {  
-  border-top-left-radius: 50% 50%; 
-  border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%; 
-  border-bottom-left-radius: 50% 50%;
-  width:  auto;
-  height: 100px;
-  
-}
+
 .presentation{
   small{
     color: rgb(160, 160, 160);
@@ -86,4 +78,21 @@ section {
   display: flex;      
   justify-content: center;
   
+}
+#wrapper{
+  clip-path:circle();
+  height: 100px;
+  width: 100px;
+  border: solid green 10px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-header-image {  
+  clip-path:circle();   
+  position: relative; 
+  width: 130px;
+  height: 130px;  
+  object-fit: cover;  
 }

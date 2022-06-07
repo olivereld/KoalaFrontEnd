@@ -20,6 +20,7 @@
 
 @media screen and (min-width: 550px){
   mat-card{ 
+    flex-basis: 420px;     
     max-height: 380px;   
     mat-card-header{
       display: flex;
