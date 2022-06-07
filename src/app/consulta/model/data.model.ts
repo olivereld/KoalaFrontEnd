@@ -1,5 +1,4 @@
-export interface EMPLOYE  {
-  id:number,
+export interface EMPLOYE  {  
   name:string,
   work:string,
   phone:string,

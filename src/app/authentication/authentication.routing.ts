@@ -1,12 +1,15 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { RegisterComponent } from './register/register.component';
-import { UsersComponent } from './users/users.component';
-
+import { AuthenticationComponent } from './login/authentication.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'users' },
-  { path: 'users', component: UsersComponent },
+
+  { path: '', component: AuthenticationComponent },
+  //{ path: 'path2', component: Name2Component },
+  //{ path: 'path3', component: Name3Component },
+  //{ path: 'path4', component: Name4Component },
+  //{ path: '**', component: PageNotFoundComponent },
+
   //{ path: 'path/:routeParam', component: MyComponent },
   //{ path: 'staticPath', component: ... },
   //{ path: '**', component: ... },
@@ -18,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AplicationRoutingModule {}
+export class AuthenticationRoutingModule {}

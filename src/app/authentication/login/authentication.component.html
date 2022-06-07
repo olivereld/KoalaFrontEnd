@@ -1,0 +1,35 @@
+<div class="login-content">
+
+  <mat-card>
+    <mat-card-header>
+      <img src="assets/logo.svg" alt="logo">
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+
+      <form [formGroup]="formG">
+        
+        <mat-form-field [color]="colorInputMark.username">
+          <input 
+          (change)="validateFormKey('username')? markIsInvalid('username','primary'):markIsInvalid('username','warn')" 
+          matInput type="text" placeholder="Usuario" formControlName="username" >
+        </mat-form-field>
+
+        <mat-form-field [color]="colorInputMark.password">
+          <input 
+          (change)="validateFormKey('password')?markIsInvalid('password','primary'):markIsInvalid('password','warn')" 
+          matInput type="password" placeholder="Contraseña" formControlName="password">
+        </mat-form-field>
+      </form>
+      
+
+    </mat-card-content>
+    
+    <mat-card-actions>          
+      <button mat-raised-button (click)="onLogin()" color="primary">Acceder</button>
+    </mat-card-actions>
+  </mat-card>
+  
+
+</div>
+<app-loading *ngIf="loading == true"></app-loading>

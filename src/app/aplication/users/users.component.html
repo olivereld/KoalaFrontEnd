@@ -1,34 +1,20 @@
-<table class="table">
-  <caption>Lista de usuarios</caption>
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Cargo</th>
-      <th scope="col">Telefono</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr (click)=" openDialog()" >
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Gerente</td>
-      <td>04164443443</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Operador</td>
-      <td>04125554454</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>Secretario</td>
-      <td>04244443353</td>
-    </tr>
-  </tbody>
-</table>
+<app-loading *ngIf="isLoading"></app-loading>
+.<div class="container-fluid mb-5" >
+    <div class="row">
+        <div class="col-6" *ngIf="!isRegister">
+          <button mat-raised-button color="primary" (click)="isRegister = true">
+            Nuevo usuario
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+          </button>
+        </div>
+        <div class="col-6" *ngIf="isRegister">
+          <button mat-raised-button color="primary" (click)="goBack()">
+            regresar
+            
+          </button>
+        </div>
+    </div>
+</div>
 
-
-
+<app-table *ngIf="!isRegister" ></app-table>
+<app-register *ngIf="isRegister" (loading)="switchLoading()" (goBack)="isRegister = false"></app-register>

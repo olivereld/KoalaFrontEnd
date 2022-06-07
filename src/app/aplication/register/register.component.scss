@@ -1,16 +1,50 @@
-.header {
-  color: #36A0FF;
-  font-size: 27px;
-  padding: 10px;
+.register-content{
+  display: flex;
+  justify-content: center;
+  mat-card{
+    mat-toolbar{      
+      border-radius: 13px 13px 0px 0px;
+    }
+    border-radius: 13px;
+    width: 80%;
+    padding: 0;
+  }
+}
+.form-register{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  gap: 5px;
+  .doble{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    flex-direction: row;
+    flex-basis: auto;
+    mat-form-field{
+      width: 50%;
+    }
+  }
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.bigicon {
-  font-size: 35px;
-  color: #36A0FF;
+.actions{
+  display: flex;
+  padding: 25px;
+  margin-top: 0;  
 }
 
-.form{
- 
-  
-  
+@media screen and (max-width: 550px){
+  .register-content{
+    
+    mat-card{
+      mat-toolbar{      
+        font-size: 12px;
+      }
+      
+    }
+  }
 }

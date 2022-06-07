@@ -13,8 +13,11 @@
   background-color: #051a6b;
 }
 .example-header-image {  
-  border-radius: 50%;
-  width: 100px;
+  border-top-left-radius: 50% 50%; 
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%; 
+  border-bottom-left-radius: 50% 50%;
+  width:  auto;
   height: 100px;
   
 }
