@@ -1,0 +1,118 @@
+@mixin content-parent {
+  display: flex;
+  align-content: center;
+  justify-content: center;  
+  margin: 0;
+  padding: 0;
+}
+@mixin content-child {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;    
+    width: 60vh;
+}
+@mixin roundend-img {
+  clip-path:circle();   
+  position: relative; 
+  width: 100px;
+  height: 100px;  
+  object-fit: cover
+}
+@mixin divider{
+  color: rgba(255, 255, 255, 0.534);
+}
+@mixin direction-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin direction-column {
+  display: flex;
+  flex-direction: column;
+}
+.content-body{
+  @include content-parent();
+  .card-body-container{
+    @include content-child();
+    background-color: linear-gradient(45deg, rgb(38, 49, 93) 0%, rgb(38, 49, 93) 1%, rgb(0, 22, 110) 100%);
+    .identification-content{
+      display: flex;
+      justify-content: left;
+      align-content: center;
+      .item-data{
+        display: flex;
+        padding-top: 5px;
+        &.info{
+          flex-direction: column;
+          justify-content: left;
+          align-items: left;
+          a{
+            text-decoration: none;
+            color: rgb(41, 41, 41);
+          }
+        }                
+        mat-icon{
+          font-size: 35px;
+          color: rgb(168, 168, 168);
+        }
+        p{
+          font-size: 15px;
+          color: rgb(44, 44, 44);
+        }
+        small{
+          text-align: left;
+          color: rgb(155, 155, 155);
+        }
+        padding-top: 15px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+      }
+
+    }
+    .social-media{
+      display: flex;
+      flex-direction: column;
+      .title{
+        margin-top: 15px;
+        color: #82848f;
+        width: 100%;
+        display: flex;
+        padding-left: 85px;
+        justify-content: left;
+      }
+      .buttons-content{
+        @include direction-row();
+        width: 100%;
+        justify-content: center;
+        .linkedin{
+          background-color: #4c61d6;
+        }
+        .button-item{
+          margin: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px)  { //Telefono
+  .content-header{   
+    background: linear-gradient(45deg, rgb(38, 49, 93) 0%, rgb(38, 49, 93) 1%, rgb(0, 22, 110) 100%);
+    padding-top: 0px;
+  .card-header{    
+    width: 100%;
+    background-color: #0E1145;
+    .h-divider{
+      color: white;
+      height: 2px;
+      width: 100%;
+      align-self: center;
+    }
+    }
+  } 
+  .content-body{
+    .card-body-container{
+      width: 100%;      
+    }  
+  }  
+}

@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ConsultaComponent } from './consulta.component';
 import {MatButtonModule} from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
-
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [ConsultaComponent],
@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     MatIconModule,
     MatButtonModule,
+    MatRippleModule,
     SharedModule,
     
     RouterModule.forChild(ConsultaRouting),

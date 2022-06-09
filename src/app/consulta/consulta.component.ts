@@ -7,7 +7,9 @@ import { EMPLOYE } from './model/data.model';
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
-  styleUrls: ['./consulta.component.scss']
+  styleUrls: ['./consulta.component.scss',
+              './body.consulta.component.scss',
+              './header.consulta.component.scss']
 })
 export class ConsultaComponent implements OnInit {
   employer:EMPLOYE | any;

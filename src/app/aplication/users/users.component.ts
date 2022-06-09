@@ -9,6 +9,7 @@ import { TablePreviewModal } from '../modals/table-preview/table-preview.modal';
 })
 export class UsersComponent implements OnInit {
   isRegister = false;
+  isEdit = false;
   isLoading = false;
   userData:any = {
     fullname:'oliver Grillet',
@@ -35,10 +36,12 @@ export class UsersComponent implements OnInit {
 
   goBack(){
     this.isRegister = false;
+    this.isEdit = false;
   }
 
   seteditionUser(event:any){
     this.userData = event;
+    this.isEdit = true;
   }
 
 }

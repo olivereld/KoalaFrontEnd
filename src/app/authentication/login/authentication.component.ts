@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.component.service';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { bounceIn } from 'ng-animate';
+import { timer } from 'rxjs';
 enum Colors {
   primary = 'primary',
   accent = 'accent',
@@ -63,24 +64,27 @@ export class AuthenticationComponent implements OnInit {
   
   onLogin(){
     this.switchLoading();
-    this.validateForm() ? this._authService.login(this.formG.value).subscribe({
-      next:(data:any)=>{
-        
-        sessionStorage.setItem('user',data['data'][0]);
-        this.router.navigate(['/dashboard'])
-      },
-      error:(err)=>{                
-        this.openSnackBar('Ocurrio un error al intentar iniciar session');
-      },
-      complete:()=>{        
-        this.switchLoading();
-      }
-    }) : 
-    this.openSnackBar('Debe completar los datos sin errores');
-    this.markIsInvalid('pasword','warn');
-    this.markIsInvalid('username','warn');
-    this.formG.markAllAsTouched();
-    this.switchLoading();
+    const eventDelay = timer(1000)
+    .subscribe( el => {
+      this.validateForm() ? this._authService.login(this.formG.value).subscribe({
+        next:(data:any)=>{
+          
+          sessionStorage.setItem('user',data['data'][0]);
+          this.router.navigate(['/dashboard'])
+        },
+        error:(err)=>{                
+          this.openSnackBar('Ocurrio un error al intentar iniciar session');
+        },
+        complete:()=>{        
+          this.switchLoading();
+        }
+      }) : 
+      this.openSnackBar('Debe completar los datos sin errores');
+      this.markIsInvalid('pasword','warn');
+      this.markIsInvalid('username','warn');
+      this.formG.markAllAsTouched();
+      this.switchLoading();
+    })    
   }
 
   openSnackBar(mensaje:string) {

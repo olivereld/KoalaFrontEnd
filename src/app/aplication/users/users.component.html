@@ -1,13 +1,13 @@
 <app-loading *ngIf="isLoading"></app-loading>
 .<div class="container-fluid mb-5" >
     <div class="row">
-        <div class="col-6" *ngIf="!isRegister">
+        <div class="col-6" *ngIf="!isRegister && !isEdit">
           <button mat-raised-button color="primary" (click)="isRegister = true">
             Nuevo usuario
             <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
           </button>
         </div>
-        <div class="col-6" *ngIf="isRegister">
+        <div class="col-6" *ngIf="isRegister || isEdit">
           <button mat-raised-button color="primary" (click)="goBack()">
             regresar
             
@@ -16,13 +16,7 @@
     </div>
 </div>
 
-<div class="content-user" *ngIf="!isRegister">
-  <div class="item item-1">
-    <app-edit [userData]="userData"></app-edit>
-  </div>
-  <div class="item item-2">
-    <app-table (editUser)="seteditionUser($event)"  ></app-table>
-  </div>
-</div>
 
+<app-edit [userData]="userData" (loading)="switchLoading()" (goBack)="isEdit = !isEdit" *ngIf="isEdit"></app-edit>
+<app-table (editUser)="seteditionUser($event)" *ngIf="!isRegister && !isEdit" ></app-table>
 <app-register *ngIf="isRegister" (loading)="switchLoading()" (goBack)="isRegister = false"></app-register>

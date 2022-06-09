@@ -26,10 +26,10 @@ export class UsersService {
   }
 
   updateUser(id:string,changes:any){
-    return this._http.put(`${this.api}user/`,changes);    
+    return this._http.put(`${this.api}user/${id}`,changes);    
   }
-  createUser(user:any){
-    
+
+  createUser(user:any){    
     return this._http.post(`${this.api}user/`,user);
   }
 
