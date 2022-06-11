@@ -10,8 +10,12 @@ export class UsersService {
   api=environment.API_URL;
   constructor(private _http:HttpClient) { }
 
-  getByParameter(parameter:any){
-    
+  getByParameter(params:any){    
+    return this._http.get(`${this.api}user/`,{params}).pipe(
+      map( (element:any) => {
+        return element['data'];
+      })
+    );
   }
   getAllUsers(){
     return this._http.get(`${this.api}user/`).pipe(

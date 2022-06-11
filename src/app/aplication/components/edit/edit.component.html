@@ -136,27 +136,29 @@
       </mat-toolbar>
 
       <mat-card-content>
+
+
+        
+        <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 4"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoadeds($event)"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"></image-cropper>            
+        <mat-form-field class="image-input">
+          <img class="image-preview" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
+          <img class="image-preview" *ngIf="userDataPreview.img" src="{{croppedImage?croppedImage:host+userData.img}}">
+          <input (change)="fileChangeEvent($event)"  type="file">  
+        </mat-form-field>
+
+
         <form  [formGroup]="formG">
-
-          <mat-form-field class="image-input">
-            <img class="image-preview" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
-            <img class="image-preview" *ngIf="userDataPreview.img" src="{{croppedImage?croppedImage:host+userData.img}}">
-            <input (change)="fileChangeEvent($event)"  type="file" matInput >
-
-
-            <image-cropper
-            [imageChangedEvent]="imageChangedEvent"
-            [maintainAspectRatio]="true"
-            [aspectRatio]="4 / 4"
-            format="png"
-            (imageCropped)="imageCropped($event)"
-            (imageLoaded)="imageLoadeds($event)"
-            (cropperReady)="cropperReady()"
-            (loadImageFailed)="loadImageFailed()"
-            ></image-cropper>            
-
-
-          </mat-form-field>
+        
+       
+   
 
           
           <mat-form-field>

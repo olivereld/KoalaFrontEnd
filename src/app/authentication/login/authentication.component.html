@@ -10,13 +10,13 @@
       <form [formGroup]="formG">
         
         <mat-form-field [color]="colorInputMark.username">
-          <input 
+          <input (keydown.enter)="onLogin()"
           (change)="validateFormKey('username')? markIsInvalid('username','primary'):markIsInvalid('username','warn')" 
           matInput type="text" placeholder="Usuario" formControlName="username" >
         </mat-form-field>
 
         <mat-form-field [color]="colorInputMark.password">
-          <input 
+          <input (keydown.enter)="onLogin()"
           (change)="validateFormKey('password')?markIsInvalid('password','primary'):markIsInvalid('password','warn')" 
           matInput type="password" placeholder="Contraseña" formControlName="password">
         </mat-form-field>

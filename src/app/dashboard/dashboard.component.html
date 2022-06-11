@@ -17,12 +17,12 @@
         <mat-nav-list class="side-nav"><!--Menu lateral-->
          
          
-        <mat-accordion>
-          <mat-expansion-panel *ngFor="let master of menuList">
-            <mat-expansion-panel-header>
+        <mat-accordion class="mat-elevation-z0">
+          <mat-expansion-panel class="mat-elevation-z0" *ngFor="let master of menuList">
+            <mat-expansion-panel-header class="mat-elevation-z0">
               {{master.name}}
             </mat-expansion-panel-header>
-            <mat-list-item *ngFor="let child of master.children">
+            <mat-list-item  class="mat-elevation-z0" *ngFor="let child of master.children">
               {{child.name}}  
             </mat-list-item>
           </mat-expansion-panel>
