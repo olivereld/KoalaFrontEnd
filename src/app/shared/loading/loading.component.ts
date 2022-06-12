@@ -12,6 +12,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LoadingComponent implements OnInit {
   @Input('cover-all') cover = false;
+  @Input('transparent') transp = true;
   constructor() { }
 
   ngOnInit(): void { }

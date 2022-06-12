@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 //o0L0i0v0e0r
 const routes: Routes = [
   { 
@@ -15,6 +16,15 @@ const routes: Routes = [
     path:':id',
     loadChildren: () => import('./consulta/consulta.module').then(m => m.ConsultaModule)    
   },
+  {
+    path:'notfound/404',
+    component:NotFoundComponent
+  },
+  {
+    path:'**',
+    pathMatch:'full',
+    redirectTo:'notfound/404'  
+  }
 ];
 
 @NgModule({

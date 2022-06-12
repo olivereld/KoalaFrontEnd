@@ -1,9 +1,9 @@
 @mixin content-parent {
   display: flex;
   align-content: center;
-  justify-content: center;  
+  justify-content: center;    
   margin: 0;
-  padding: 0;
+  padding: 0;    
 }
 @mixin content-child {
     display: flex;
@@ -15,8 +15,8 @@
 @mixin roundend-img {
   clip-path:circle();   
   position: relative; 
-  width: 100px;
-  height: 100px;  
+  width: 90px;
+  height: 90px;  
   object-fit: cover
 }
 @mixin divider{
@@ -30,9 +30,13 @@
   display: flex;
   flex-direction: column;
 }
-.content-body{
+
+.content-body{  
   @include content-parent();
+  height: auto;
   .card-body-container{
+    -webkit-box-shadow: 0px 5px 20px 5px rgba(0,0,0,0.34); 
+    box-shadow: 0px 5px 20px 5px rgba(0,0,0,0.34);
     @include content-child();
     background-color: linear-gradient(45deg, rgb(38, 49, 93) 0%, rgb(38, 49, 93) 1%, rgb(0, 22, 110) 100%);
     .identification-content{
@@ -80,39 +84,97 @@
         padding-left: 85px;
         justify-content: left;
       }
-      .buttons-content{
-        @include direction-row();
+      .buttons-content{ 
         width: 100%;
-        justify-content: center;
+        justify-content: center;       
+        .button-item{
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        
+        &.social{
+          .button-item{
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+          @include direction-row();
+        }        
+        .button-item{        
+           .extra-button{
+            width: 50%;
+            padding: 10px
+          }
+        }
+        &.extra{        
+          @include direction-column();                    
+        }        
+
         .linkedin{
           background-color: #4c61d6;
         }
-        .button-item{
-          margin: 20px;
-        }
+        
       }
     }
   }
 }
+.buttons-content.movil{
+  display: none;
+}
 
-@media screen and (max-width: 550px)  { //Telefono
-  .content-header{   
-    background: linear-gradient(45deg, rgb(38, 49, 93) 0%, rgb(38, 49, 93) 1%, rgb(0, 22, 110) 100%);
-    padding-top: 0px;
-  .card-header{    
-    width: 100%;
-    background-color: #0E1145;
-    .h-divider{
-      color: white;
-      height: 2px;
-      width: 100%;
-      align-self: center;
-    }
-    }
-  } 
+@media screen and (max-width: 650px)  { //Telefono  
+  .buttons-content.extras{
+    display: none;
+  }
+  .buttons-content.movil{    
+    display: block;    
+    position: absolute;    
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;        
+    height: 0;
+    .button-item{      
+      display: flex;
+      width: auto;      
+      justify-content: end;      
+    }    
+  }
   .content-body{
+    height: auto;    
     .card-body-container{
+      -webkit-box-shadow:none; 
+      box-shadow: none;
       width: 100%;      
-    }  
-  }  
+    } 
+    .social-media{
+      padding: 0;
+      width: 100%;
+      height: auto; 
+      .buttons-content{
+        padding-top: 0;        
+        margin-top:0;
+        .button-item{
+          margin-top: 0px!important;
+        }
+      }     
+      .title{
+        margin-top: 0px;
+      }
+    } 
+  }    
+}
+
+@media screen and (min-height: 800px){
+  .content-body{         
+    .social-media{
+      padding-top: 50px;
+      height: 100% !important;    
+    } 
+  }      
+}
+@media screen and (max-height: 740px){
+  .content-body{         
+    .social-media{      
+      height: 100% !important;    
+    } 
+  }      
 }

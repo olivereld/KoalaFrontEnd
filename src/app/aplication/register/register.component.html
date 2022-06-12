@@ -1,84 +1,90 @@
-<div class="container register-content">
-    <mat-card>
-        <mat-toolbar color="primary">
-            <span>Registrar usuario</span>
-            <span class="spacer"></span>            
-            <mat-slide-toggle [(ngModel)]="isAdmin">Administrador</mat-slide-toggle>
-        </mat-toolbar>
-    
-        <mat-card-content>
-        <div class="container justify-content-center text-center">
-            <div class="row">
-                <div class="col-12">
-                    <form [formGroup]="formG" class="form-register mt-2 ">
-                        
-                        <div class="doble" *ngIf="isAdmin">
+<div class="container justify-content-center text-center register-content">
+  <div class="row w-100">
+    <div class="col-12">
+        <mat-card>
+            <mat-toolbar color="primary">
+                <span>Registrar usuario</span>
+                <span class="spacer"></span>            
+                <mat-slide-toggle [(ngModel)]="isAdmin">Administrador</mat-slide-toggle>
+            </mat-toolbar>
+        
+            <mat-card-content>
+            <div class="container justify-content-center text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="formG" class="form-register mt-2 ">
+                            
+                            <div class="doble" *ngIf="isAdmin">
+                                <mat-form-field >
+                                    <input formControlName="username" matInput placeholder="Usuario*">                            
+                                    <mat-icon matSuffix>person</mat-icon>
+                                </mat-form-field>
+                                <mat-form-field >
+                                    <input formControlName="password" matInput placeholder="Contraseña*">                            
+                                    <mat-icon matSuffix>key</mat-icon>
+                                </mat-form-field>
+                            </div>
+        
+                            <div class="doble">
+                                <mat-form-field >
+                                    <input formControlName="fullname" matInput placeholder="Nombre">                            
+                                </mat-form-field>
+                                <mat-form-field >
+                                    <input formControlName="lastname" matInput placeholder="Apellido">                            
+                                </mat-form-field>
+                            </div>
+                            
+        
                             <mat-form-field >
-                                <input formControlName="username" matInput placeholder="Usuario*">                            
-                                <mat-icon matSuffix>person</mat-icon>
+                                <input formControlName="email" matInput placeholder="Correo">
+                                <mat-icon matSuffix>email</mat-icon>
+        
                             </mat-form-field>
-                            <mat-form-field >
-                                <input formControlName="password" matInput placeholder="Contraseña*">                            
-                                <mat-icon matSuffix>key</mat-icon>
+                            
+                            <mat-form-field>
+                                <input formControlName="phone" matInput placeholder="Telefono">
+                                <mat-icon matSuffix>phone</mat-icon>
                             </mat-form-field>
-                        </div>
-
-                        <div class="doble">
-                            <mat-form-field >
-                                <input formControlName="fullname" matInput placeholder="Nombre">                            
+                                                                
+                            <mat-form-field>
+                                <input formControlName="work" matInput placeholder="Cargo">
+                                <mat-icon matSuffix>work</mat-icon>
                             </mat-form-field>
-                            <mat-form-field >
-                                <input formControlName="lastname" matInput placeholder="Apellido">                            
+                            
+                            <mat-form-field>
+                                <input formControlName="linkedin" matInput placeholder="Linkedin">
+                                <mat-icon matSuffix>link</mat-icon>
                             </mat-form-field>
-                        </div>
-                        
-
-                        <mat-form-field >
-                            <input formControlName="email" matInput placeholder="Correo">
-                            <mat-icon matSuffix>email</mat-icon>
-
-                        </mat-form-field>
-                        
-                        <mat-form-field>
-                            <input formControlName="phone" matInput placeholder="Telefono">
-                            <mat-icon matSuffix>phone</mat-icon>
-                        </mat-form-field>
-                        
-                        <mat-form-field>
-                            <input formControlName="direction" matInput placeholder="Direccion">
-                            <mat-icon matSuffix>room</mat-icon>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <input formControlName="work" matInput placeholder="Cargo">
-                            <mat-icon matSuffix>work</mat-icon>
-                        </mat-form-field>
-                        
-                        <mat-form-field>
-                            <input formControlName="linkedin" matInput placeholder="Linkedin">
-                            <mat-icon matSuffix>link</mat-icon>
-                        </mat-form-field>
-
-                        <ngx-dropzone (change)="onSelect($event)">
-                            <ngx-dropzone-label>Cargar Imagen</ngx-dropzone-label>
-                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                            </ngx-dropzone-preview>
-                        </ngx-dropzone>
-
-                        <mat-card-actions class="actions">                                                    
-                            <button mat-raised-button color="warn" (click)="returnTable()">Cancelar</button>
-                            <div class="spacer"></div>
-                            <button mat-raised-button color="primary" (click)="onSave()">Guardar</button>                            
-                        </mat-card-actions>
-                    </form>
-                </div>        
+        
+                            <ngx-dropzone (change)="onSelect($event)">
+                                <ngx-dropzone-label>Cargar Imagen</ngx-dropzone-label>
+                                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-preview>
+                            </ngx-dropzone>
+        
+                            <mat-card-actions class="actions">                                                    
+                                <button mat-raised-button color="warn" (click)="returnTable()">Cancelar</button>
+                                <div class="spacer"></div>
+                                <button mat-raised-button color="primary" (click)="onSave()">Guardar</button>                            
+                            </mat-card-actions>
+                        </form>
+                    </div>        
+                </div>
             </div>
-        </div>
-        </mat-card-content>
-
-
-       
-    </mat-card>
+            </mat-card-content>
+        
+        
+           
+        </mat-card>
+        
+    </div>
+   
+  </div>
 </div>
+
+
+
+
+
 

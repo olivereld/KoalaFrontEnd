@@ -26,13 +26,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CarnetComponent } from './components/carnet/carnet.component';
+import { CarnetDialogComponent } from './components/carnet-dialog/carnet-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     UsersComponent, 
     TableComponent,
     EditComponent,
     FullnamePipe,
-    RegisterComponent],
+    RegisterComponent,
+    CarnetComponent,
+    CarnetDialogComponent],
   imports: [ 
     CommonModule,
     AplicationRoutingModule,
@@ -41,12 +46,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatButtonModule,
     MatIconModule,
     MatTableModule,
+    MatSelectModule,
     MatRippleModule,
     MatPaginatorModule,
     MatSlideToggleModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatDialogModule,
     MatToolbarModule,
     MatMenuModule,
     MatSortModule,

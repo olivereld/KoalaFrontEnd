@@ -1,0 +1,36 @@
+.not-found{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 400px;
+  }
+  .code{
+    color: rgb(116, 160, 130);
+    margin-top: 30px;
+    font-size: 60px;
+  }
+  p{
+    margin-top: 40px;
+    font-size: 30px;
+  }
+}
+@media screen and (max-width:500px) {
+  .not-found{
+
+    img{
+      width: 200px;
+    }
+    .code{
+      color: rgb(116, 160, 130);
+      margin-top: 30px;
+      font-size: 60px;
+    }
+    p{
+      margin-top: 40px;
+      font-size: 15px;
+    }
+  } 
+}

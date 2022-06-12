@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { Sort } from '@angular/material/sort';
 import { DATADUMMY } from './dataDummy';
 import { HttpParams } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { CarnetDialogComponent } from '../carnet-dialog/carnet-dialog.component';
 
 
 @Component({
@@ -34,7 +36,10 @@ export class TableComponent implements OnInit {
     pageSize:0
   };
  
-  constructor(private userService:UsersService,private router:Router) { }
+  constructor(
+    private userService:UsersService,
+    private router:Router,
+    public dialog: MatDialog,) { }
   ngAfterViewInit() {    
   }
   ngOnInit(): void {
@@ -110,6 +115,17 @@ export class TableComponent implements OnInit {
   
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  openCarnetQr(element:User){
+    console.log('User',element);
+    this.dialog.open( CarnetDialogComponent,
+      {
+        width: '550px',  
+        data:{
+          element
+        }            
+      })
   }
   
 }

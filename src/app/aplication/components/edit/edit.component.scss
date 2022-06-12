@@ -1,19 +1,27 @@
 
-.Main-content{   
+.Main-content{  
+  width: 100%; 
   display: flex;
   flex-direction: row;      
   justify-content: center; 
+
 }
 #Formulario{
-  width: 450px;
+  width: 100em;
   height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   mat-card{
     margin: 0;
     padding: 0;
+    width: 100%;
     mat-toolbar{      
-      border-radius: 13px 13px 0px 0px;
+      &.primary-tool{
+        border-radius: 13px 0px 0px 0px;
+      }
+      &.second-tool{
+        border-radius: 0px 13px 0px 0px;
+      }      
       margin-bottom: 15px;
     }
     mat-card-content{
@@ -28,6 +36,9 @@
       }
     }
   }
+}
+.cropper{
+  max-width: 300px!important;
 }
 #Content{    
     width: 350px;

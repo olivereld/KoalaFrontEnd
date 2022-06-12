@@ -33,7 +33,7 @@ export class EditComponent implements OnInit {
     host = environment.API_IMG;
     flipInY:any;
     flipOutY:any;
-    @Input() loading = new EventEmitter();
+    @Output() loading = new EventEmitter();
     @Output() goBack = new EventEmitter();
 
     imageChangedEvent: any = '';
@@ -50,8 +50,7 @@ export class EditComponent implements OnInit {
       username:  '',
       password:  '',
       fullname:  '',      
-      email:     '',
-      direction: '',
+      email:     '',      
       phone:     '',
       work:      '',
       role:      '',
@@ -62,8 +61,7 @@ export class EditComponent implements OnInit {
       username:  '',
       password:  '',
       fullname:  '',      
-      email:     '',
-      direction: '',
+      email:     '',      
       phone:     '',
       work:      '',
       role:      '',
@@ -82,9 +80,12 @@ export class EditComponent implements OnInit {
     }
 
     updateInformation(){
+      this.loading.emit();
       this.userService.updateUser(this.userData._id,this.formG.value).subscribe( resp => {
-        console.log('Usuario editado');      
-          const formData = new FormData();
+        console.log('Usuario editado');  
+          if(this.croppedImage){
+            console.log('Subiendo imagen')
+            const formData = new FormData();
           formData.append('img',base64ToFile(this.croppedImage))
           this.userService.uploadImage(formData,this.userData._id).subscribe(
           {
@@ -99,8 +100,13 @@ export class EditComponent implements OnInit {
               this.loading.emit();
               this.goBack.emit();
             }
-          }
-        )
+          })
+
+          } else{
+            this.loading.emit();
+            this.goBack.emit();
+          }   
+          
         
       });
     }
@@ -111,8 +117,7 @@ export class EditComponent implements OnInit {
           username: [this.userData.username,[Validators.min(4)]],
           password: [this.userData.password,[Validators.min(4)]],
           fullname: [this.userData.fullname,[Validators.required,Validators.min(4)]],          
-          email:    [this.userData.email,[Validators.required,Validators.min(4)]],
-          direction:[this.userData.direction,[Validators.min(4)]],
+          email:    [this.userData.email,[Validators.required,Validators.min(4)]],          
           phone:    [this.userData.phone,[Validators.required, Validators.min(4)]],
           work:     [this.userData.work,[Validators.required,Validators.min(4)]],
           role:     [this.userData.role,[Validators.min(4)]],

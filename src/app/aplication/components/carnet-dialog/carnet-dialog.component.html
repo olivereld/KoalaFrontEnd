@@ -1,0 +1,26 @@
+<img class="img-title" src="assets/img/koala.svg" alt="">
+<div class="qr-container" mat-dialog-content>
+  <div class="content" role="main">
+    <h2>{{title}}</h2>
+    <div class="canvas" #canvas></div>
+    <label>  
+      
+      <mat-form-field>
+        <mat-select  [(value)]="extension">
+          <mat-option [value]="'svg'">SVG</mat-option>
+          <mat-option [value]="'png'">PNG</mat-option>
+          <mat-option [value]="'jpeg'">JPEG</mat-option>
+          <mat-option [value]="'webp'">WEBP</mat-option>        
+        </mat-select>
+
+      </mat-form-field>
+      
+      
+    </label>
+  </div>
+</div>
+
+<div class="dialog-actions" mat-dialog-actions>
+  <button mat-raised-button [color]="'warn'"    (click)="close()">Cerrar</button>
+  <button mat-raised-button [color]="'primary'" (click)="download()">Descargar</button>
+</div>

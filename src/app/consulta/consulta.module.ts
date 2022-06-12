@@ -7,16 +7,22 @@ import { ConsultaComponent } from './consulta.component';
 import {MatButtonModule} from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
 import { MatRippleModule } from '@angular/material/core';
+import { NgxVcardModule } from "ngx-vcard";
 
+import { ConsultDialogComponent } from './dialog/consult-dialog';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatList, MatListModule } from '@angular/material/list';
 @NgModule({
-  declarations: [ConsultaComponent],
+  declarations: [ConsultaComponent,ConsultDialogComponent],
   imports: [
     CommonModule,
+    SharedModule,
     MatIconModule,
+    MatListModule,
+    NgxVcardModule,
+    MatDialogModule,
     MatButtonModule,
     MatRippleModule,
-    SharedModule,
-    
     RouterModule.forChild(ConsultaRouting),
   ],
   exports:[ConsultaComponent]

@@ -47,6 +47,10 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+          <button (click)="openCarnetQr(element)" mat-menu-item>
+            <mat-icon>qr_code</mat-icon>
+            <span>Codigo QR</span>
+          </button>
           <button (click)="checkDetail(element._id)" mat-menu-item>
             <mat-icon>visibility</mat-icon>
             <span>Detalles</span>

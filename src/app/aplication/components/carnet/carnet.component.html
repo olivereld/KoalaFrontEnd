@@ -1,0 +1,26 @@
+<mat-card class="carnet">
+  <mat-card-header class="header-card">
+      <img class="img-title" src="assets/img/koala.svg" alt="">
+  </mat-card-header>
+  
+  <mat-card-content class="carnet-content">
+    <div class="img-carnet-border"></div>
+    <img class="img-carnet" src="assets/noimage.webp" alt="profile">
+    <div class="white-box"></div>
+    <div class="blue-box"></div>
+  </mat-card-content>
+  <mat-card-actions class="data-sone">
+    <div class="qr-code">
+      <img src="assets/img/qr-template.svg" alt="temp">
+    </div>
+      <div class="divisor"></div>
+    <div class="information-worker">
+      <h4 class="fullname">{{nombre}}</h4>
+      <h4 class="fullname">{{apellido}}</h4>      
+      <h4 class="work">{{work}}</h4>
+    </div>
+  </mat-card-actions>
+  <mat-toolbar class="carnet-footer">
+    <span>Caracas-Venezuela</span>
+  </mat-toolbar>
+</mat-card>

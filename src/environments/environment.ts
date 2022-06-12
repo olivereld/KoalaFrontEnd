@@ -2,12 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const PORT = 3500;
-const HOST = 'localhost'
+const HOST = '192.168.1.109'
 const URL_BACKEND = `http://${HOST}:${PORT}/koala/`;
 export const environment = {
   API_URL:`${URL_BACKEND}v1/`,
   API_PUBLIC:`${URL_BACKEND}v1-public/`,
   API_IMG:`http://${HOST}:${PORT}/public/`,
+  HOST:`http://${HOST}:${PORT}/`,
   production: false
 };
 /*

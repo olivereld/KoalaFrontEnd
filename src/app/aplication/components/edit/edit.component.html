@@ -127,40 +127,23 @@
     </div>
   </div>
 
-  <div id="Formulario" class="container justify-content-center text-center" *ngIf="!preview && !animationProces" [@edition]="edition">
-    <mat-card>
-      <mat-toolbar color="primary">
+  <div id="Formulario" class="container-fluid justify-content-center text-center" *ngIf="!preview && !animationProces" [@edition]="edition">
+    <mat-card clasS="col-6">
+      <mat-toolbar Class="primary-tool" color="primary">
         <span>Editar usuario</span>
-        <span class="spacer"></span>            
-        <button mat-mini-fab color="primary" (click)="switchPreview()"><mat-icon>visibility</mat-icon></button>
+        <span class="spacer"></span>                    
       </mat-toolbar>
+       
+      <div class="image-input">
+        <img class="image-preview" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
+        <img class="image-preview" *ngIf="userDataPreview.img"  src="{{croppedImage?croppedImage:host+userData.img}}" >
+      </div>
+      
 
       <mat-card-content>
 
-
-        
-        <image-cropper
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="true"
-        [aspectRatio]="4 / 4"
-        format="png"
-        (imageCropped)="imageCropped($event)"
-        (imageLoaded)="imageLoadeds($event)"
-        (cropperReady)="cropperReady()"
-        (loadImageFailed)="loadImageFailed()"></image-cropper>            
-        <mat-form-field class="image-input">
-          <img class="image-preview" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
-          <img class="image-preview" *ngIf="userDataPreview.img" src="{{croppedImage?croppedImage:host+userData.img}}">
-          <input (change)="fileChangeEvent($event)"  type="file">  
-        </mat-form-field>
-
-
         <form  [formGroup]="formG">
-        
-       
-   
-
-          
+              
           <mat-form-field>
             <input formControlName="fullname" matInput placeholder="Nombre" >
           </mat-form-field>
@@ -178,20 +161,43 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input formControlName="direction" matInput placeholder="Direccion" >
-          </mat-form-field>  
-
-          <mat-form-field>
             <input formControlName="linkedin" matInput placeholder="Linkedin" >
           </mat-form-field>                  
 
 
         </form>
       </mat-card-content>
-      <mat-card-actions>
+      <mat-card-actions class="p-5">
         <button mat-button (click)="updateInformation()">Guardar Cambios</button>
       </mat-card-actions>
     </mat-card>
+    
+
+    <mat-card clasS="col-6">
+      <mat-toolbar Class="seond-tool" color="primary">       
+        <span class="spacer"></span>            
+        <button mat-mini-fab color="primary" (click)="switchPreview()"><mat-icon>visibility</mat-icon></button>
+      </mat-toolbar>
+
+      <input (change)="fileChangeEvent($event)"  type="file">  
+      
+      <image-cropper
+        class="cropper"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="2/2"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoadeds($event)"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()">
+      </image-cropper>                  
+
+      
+    </mat-card>
+    
+    
+    
   </div>
 
 </div>

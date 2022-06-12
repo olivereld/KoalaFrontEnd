@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastMessageService } from 'src/app/consulta/service/toast-message.service';
 import { UsersService } from '../services/users.service';
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _formB:FormBuilder,
-    private _userService:UsersService
+    private _userService:UsersService,
+    private _toast:ToastMessageService
     ) {
     this.createForm();
    }
@@ -32,8 +34,7 @@ export class RegisterComponent implements OnInit {
         password: ['',[Validators.min(4)]],
         fullname: ['',[Validators.required,Validators.min(4)]],
         lastname: ['',[Validators.required,Validators.min(4)]],
-        email:    ['',[Validators.required,Validators.min(4)]],
-        direction:['',[Validators.min(4)]],
+        email:    ['',[Validators.required,Validators.min(4)]],        
         phone:    ['',[Validators.required, Validators.min(4)]],
         work:     ['',[Validators.required,Validators.min(4)]],
         role:     ['',[Validators.min(4)]],
@@ -48,8 +49,7 @@ export class RegisterComponent implements OnInit {
       let userData = {        
         email     :this.formG.get('email')?.value,
         fullname  :`${this.formG.get('fullname')?.value} ${this.formG.get('lastname')?.value}`,
-        work      :this.formG.get('work')?.value,
-        address   :this.formG.get('direction')?.value,        
+        work      :this.formG.get('work')?.value,                
         phone     :this.formG.get('phone')?.value,
         linkedin  :this.formG.get('linkedin')?.value,
         instagram :this.instagram,
@@ -97,11 +97,13 @@ export class RegisterComponent implements OnInit {
       }
     )
     }else{
+      this._toast.showWarning('Debe llenar todos los campos requeridos');
       this.formG.markAllAsTouched();
     }
   }
+  imgPreview:any;
   onSelect(event:any) {
-    console.log(event);
+    this.imgPreview = URL.createObjectURL(event.addedFiles[0])        
     this.files.push(...event.addedFiles);    
     
     
