@@ -1,0 +1,157 @@
+*{
+  padding: 0;
+}
+#Content{    
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.card{
+  margin: 0;
+  padding: 0;
+  height: auto;
+  border: none;
+}
+.card-header{
+  color:white;
+  background:#0E1145;  
+}
+
+.presentation{      
+  small{
+    color: rgb(160, 160, 160);
+  }
+  .fullname{
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+  }
+}
+.action{  
+  display: flex;
+  margin: 0;
+  padding: 0;
+  max-height: 50px;
+  border-top: 1px solid #1C6EA4;
+  .divider{
+    align-self: center;
+    border:         none;
+    border-left:    3px solid hsla(200, 10%, 50%,100);      
+    width:          2px; 
+    height: 100%;      
+  }
+  .action-content{
+    padding: 0;
+    margin:  0;
+  }
+}
+.eye-button{
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.main-content{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  .list-group{
+    margin: 0;
+  }
+}
+
+.none-space{
+  margin: 0;
+  padding: 0;
+}
+
+.action-button{
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: #05196b00;
+  border: none;
+  mat-icon{
+    color: #e2e2e2;
+    font-size: 35px;
+  }  
+}
+ul{
+  margin-top: 50px;
+}
+
+li{
+  padding: 25px;
+  display: flex;  
+  flex-flow: flex-start;
+  align-content: space-between;    
+  gap: 60px;
+  color: rgb(160, 160, 160);  
+  .item{
+    display: flex;
+    flex-direction: column;
+    flex-flow: flex-start;
+    justify-content: center;
+    text-align: left;
+    button{
+        font-size: 12px;
+        mat-icon{
+          font-size: 25px;
+        }
+    }
+    mat-icon{
+      font-size: 35px;
+    }
+    p{
+      color: black;
+      font-size: large;
+    }    
+  }  
+}
+section {
+  display: table;
+}
+.example-flex-container{
+  display: flex;      
+  justify-content: center;
+  
+}
+#wrapper{
+  clip-path:circle();
+  height: 80px;
+  width: 80px;
+  border: solid green 10px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-header-image {  
+  clip-path:circle();   
+  position: relative; 
+  width: 70px;
+  height: 70px;  
+  object-fit: cover;  
+}
+
+.image-preview{
+  clip-path:circle();   
+  position: relative; 
+  width: 200px;
+  height: 200px;  
+  object-fit: cover;  
+}
+
+
+.head-img{
+    button{  
+        top:1%;
+        left: 60%;        
+        position: absolute;
+    }
+}
+
+.exit-button{  
+  position: absolute;
+  right: 0;  
+}

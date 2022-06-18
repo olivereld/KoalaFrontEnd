@@ -29,6 +29,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CarnetComponent } from './components/carnet/carnet.component';
 import { CarnetDialogComponent } from './components/carnet-dialog/carnet-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableResponsiveDirective } from '../directives/mat-table-responsive.directive';
+import { DetailsDialogComponent } from './components/details-dialog/details-dialog.component';
+
 @NgModule({
   declarations: [
     UsersComponent, 
@@ -37,7 +40,9 @@ import { MatSelectModule } from '@angular/material/select';
     FullnamePipe,
     RegisterComponent,
     CarnetComponent,
-    CarnetDialogComponent],
+    CarnetDialogComponent,
+    MatTableResponsiveDirective,
+    DetailsDialogComponent],
   imports: [ 
     CommonModule,
     AplicationRoutingModule,
@@ -64,7 +69,7 @@ import { MatSelectModule } from '@angular/material/select';
     SharedModule
 
   ],
-  exports: [],
+  exports: [MatTableResponsiveDirective],
   providers: [],
 })
 export class AplicationModule {}

@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AplicationModule } from '../aplication/aplication.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AplicationModule } from '../aplication/aplication.module';
     MatExpansionModule,
     DashboardRoutingModule,
     AplicationModule,
+    SharedModule
     
   ],
   exports: [],

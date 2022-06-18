@@ -5,8 +5,8 @@
     mat-toolbar{      
       border-radius: 13px 13px 0px 0px;
     }
-    border-radius: 13px;
-    width: 80%;
+    width: 50%;
+    border-radius: 13px;    
     padding: 0;
   }
 }
@@ -39,8 +39,10 @@
 
 @media screen and (max-width: 550px){
   .register-content{
-    
+    margin: 0;
+    padding: 0;
     mat-card{
+      width: 90%;
       mat-toolbar{      
         font-size: 12px;
       }

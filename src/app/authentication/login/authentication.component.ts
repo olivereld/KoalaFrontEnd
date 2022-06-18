@@ -74,27 +74,29 @@ export class AuthenticationComponent implements OnInit,AfterViewChecked {
   
   onLogin(){
     this.switchLoading();
-    const eventDelay = timer(1000)
-    .subscribe( el => {
-      this.validateForm() ? this._authService.login(this.formG.value).subscribe({
-        next:(data:any)=>{          
-          sessionStorage.setItem('user',data['data'][0]);
-          this.router.navigate(['/dashboard'])
-        },
-        error:(err)=>{     
-          console.log(err)
-          this.errorHandler.loginErrorManager(err.status);          
-        },
-        complete:()=>{        
+    this.validateForm() ? this._authService.login(this.formG.value).subscribe({
+      next:(data:any)=>{          
+        sessionStorage.setItem('user',data['data'][0]);
+        this.router.navigate(['/dashboard'])
+      },
+      error:(err)=>{     
+        this.switchLoading(); 
+        console.log(err)
+        this.errorHandler.loginErrorManager(err.status);          
+      },
+        complete:()=>{    
+          console.log('completada la solicitud')    
           this.switchLoading();
-        }
-      }) : 
-      this.errorHandler.loginErrorEmpyForm();
+        }    
+      }):this.invalidForm();                     
+    }
+    
+    invalidForm(){
+      this.errorHandler.loginErrorEmpyForm()
+      this.formG.markAllAsTouched();       
       this.markIsInvalid('pasword','warn');
       this.markIsInvalid('username','warn');
-      this.formG.markAllAsTouched();
       this.switchLoading();
-    })    
   }
 
   openSnackBar(mensaje:string) {
@@ -105,6 +107,7 @@ export class AuthenticationComponent implements OnInit,AfterViewChecked {
   }
 
   switchLoading(){    
+    console.log(this.loading)
     this.loading = this.loading?false:true;
   }
 

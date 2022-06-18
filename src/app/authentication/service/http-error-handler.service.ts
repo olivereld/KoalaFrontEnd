@@ -9,12 +9,17 @@ export class HttpErrorHandlerService {
   constructor(private toastr:ToastrService) { }
 
   loginErrorManager(code:number) {
-    console.log(code);
-    if(code < 500){
-      this.toastr.error('Credenciales invalidas','Error al autenticar');
-    }else{
-      this.toastr.error('Error al iniciar session','Error')
+    try{
+      console.log(code);
+      if(code < 500 && code > 0){
+        this.toastr.error('Credenciales invalidas','Error al autenticar');
+      }else{
+        this.toastr.error('Se perdio la conexion con el Servidor','Conexion Perdida')
+      }
+    }catch(err){
+      console.log(err);
     }
+    
   }
   
   loginErrorEmpyForm(){

@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
               },
               complete:()=>{
                 this.loading.emit();
-                this.returnTable();
+                //this.returnTable();
               }
             }
           )
@@ -97,7 +97,7 @@ export class RegisterComponent implements OnInit {
       }
     )
     }else{
-      this._toast.showWarning('Debe llenar todos los campos requeridos');
+      this._toast.showWarning('Debe llenar todos los campos requeridos con su imagen');
       this.formG.markAllAsTouched();
     }
   }

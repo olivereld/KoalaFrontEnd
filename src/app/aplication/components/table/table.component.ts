@@ -10,6 +10,7 @@ import { DATADUMMY } from './dataDummy';
 import { HttpParams } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { CarnetDialogComponent } from '../carnet-dialog/carnet-dialog.component';
+import { DetailsDialogComponent } from '../details-dialog/details-dialog.component';
 
 
 @Component({
@@ -79,11 +80,13 @@ export class TableComponent implements OnInit {
     this.actualPage = parseInt(paginationInfo.actualPages);
     this.paginatorInfo['pageSize']  =  parseInt(paginationInfo.totalPages);
   }
+  
   handlePageEvent(event: PageEvent){    
     this.actualPage = event.pageIndex+1;
     this.limit      = event.pageSize;
     this.fillTable(false);
   }
+
   deleteUser(id:string){
     this.userService.deleteUser(id).subscribe(
       {
@@ -100,8 +103,15 @@ export class TableComponent implements OnInit {
     )
   }
 
-  checkDetail(id:string){
-    this.router.navigate([`/${id}`]);
+  checkDetail(element:any){
+    this.dialog.open( DetailsDialogComponent,
+      {
+        width: '550px', 
+        height:'auto',
+        data:{
+          user:element
+        }            
+      })        
   }
 
   editUserNow(user:any){

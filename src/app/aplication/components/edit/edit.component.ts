@@ -30,6 +30,7 @@ export class EditComponent implements OnInit {
     employer:EMPLOYE | any;
     preview:boolean = false;
     isLoading:boolean = true;
+    imageEditorMobile:boolean = false;
     host = environment.API_IMG;
     flipInY:any;
     flipOutY:any;
@@ -164,9 +165,7 @@ export class EditComponent implements OnInit {
 
   updateDataPreview(){
       this.userDataPreview = this.formG.value;
-  }
-  
-
+  }  
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
@@ -180,7 +179,9 @@ export class EditComponent implements OnInit {
   cropperReady() {
       console.log('ready');
   }
-  
+  switchImageEditor(){
+    this.imageEditorMobile = !this.imageEditorMobile;
+  }
   loadImageFailed() {
 
   }

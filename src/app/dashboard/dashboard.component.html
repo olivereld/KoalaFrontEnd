@@ -1,6 +1,6 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
     <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <!--button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button-->
       <img class="img-logo" src="assets/logo_white.svg" alt="">
       
       <div class="spacer"></div>
@@ -36,6 +36,7 @@
   
       <mat-sidenav-content>        
         <router-outlet></router-outlet>
+        <app-footer></app-footer>
       </mat-sidenav-content>
       
     </mat-sidenav-container>

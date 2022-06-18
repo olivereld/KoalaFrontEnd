@@ -1,132 +1,4 @@
-<div class="Main-content">
- 
-  <div id="Content" class="container justify-content-center text-center" *ngIf="preview && animationProces"
-
-  [@flipInY]="getAnimation()">        
-
-    <div class="row">
-  
-        <div class="card col-12">
-          <div class="card-header">
-            
-            <div class="container justify-content-center">
-
-              <div class="row align-items-center">                
-                <button class="eye-button" mat-mini-fab color="primary" (click)="switchPreview()"><mat-icon>visibility_off</mat-icon></button>
-                <div class="head-img col-12 text-center mt-4">              
-                  <div id="wrapper text-center">
-                    <img class="example-header-image" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
-                    <img class="example-header-image" *ngIf="userDataPreview.img" src="{{croppedImage?croppedImage:host+userData.img}}">
-                  </div>              
-                </div>
-                
-                <div class="col-12 presentation mt-4">                
-                    <h3 class="fullname">{{userDataPreview.fullname}}</h3>
-                </div> 
-                <div class="col-12 presentation m-0">                
-                    <small>{{userDataPreview.work}}</small>
-                </div>             
-      
-              </div>
-            </div>
-            
-          </div>
-    
-          <div class="card-header action">
-            <div class="col-6 action-content" >
-              <a class="action-button" href="#" matRipple [matRippleRadius]="30">
-                <mat-icon aria-hidden="false" aria-label="Example home icon">local_phone</mat-icon>
-              </a>              
-            </div>
-    
-            <hr class="divider">
-    
-            <div class="col-6 action-content">
-              <a class="action-button" href="tel:+{{userDataPreview.phone}}" matRipple [matRippleRadius]="30">            
-                <mat-icon aria-hidden="false" aria-label="Example home icon">email</mat-icon>
-              </a>
-              
-            </div>                  
-        </div>
-    
-        <div class="card-body main-content">
-    
-          <ul class="list-group">
-            <li class="list-group-item ">
-              <div class="item">
-                <mat-icon aria-hidden="false" aria-label="Example home icon">local_phone</mat-icon>
-              </div>
-              <div class="item">
-               <p>
-                 {{userDataPreview.phone}}              
-               </p>
-               
-               
-               <small>Movil</small>
-               
-              </div>
-             
-              
-            </li>
-               
-    
-           <li class="list-group-item ">
-             <div class="item">
-    
-               <mat-icon aria-hidden="false" aria-label="Example home icon">email</mat-icon>
-             </div>
-             <div class="item">
-              <p>
-                 {{userDataPreview.email}}              
-              </p>
-              
-              <small>Email</small>
-              
-             </div>
-            
-             
-           </li>
-    
-           <li class="list-group-item ">
-             <div class="item">
-    
-               <mat-icon aria-hidden="false" aria-label="Example home icon">work</mat-icon>
-             </div>
-             <div class="item">
-              <p>
-                KOALA VNZLA
-              </p>          
-              <small>{{userDataPreview.work}}</small>                     
-             </div>                 
-           </li>
-    
-           <li class="list-group-item ">
-             <div class="item">
-    
-               <mat-icon aria-hidden="false" aria-label="Example home icon">language</mat-icon>
-             </div>
-             <div class="item">
-              <a>
-                https://koalaandina.com
-              </a>
-              
-              <small>Pagina web</small>
-              
-             </div>
-            
-             
-           </li>
-            
-          </ul>
-          
-         </div>
-         
-    
-      </div>
-      
-    </div>
-  </div>
-
+<div class="Main-content d-none d-md-block">
   <div id="Formulario" class="container-fluid justify-content-center text-center" *ngIf="!preview && !animationProces" [@edition]="edition">
     <mat-card clasS="col-6">
       <mat-toolbar Class="primary-tool" color="primary">
@@ -175,8 +47,7 @@
 
     <mat-card clasS="col-6">
       <mat-toolbar Class="seond-tool" color="primary">       
-        <span class="spacer"></span>            
-        <button mat-mini-fab color="primary" (click)="switchPreview()"><mat-icon>visibility</mat-icon></button>
+        <span class="spacer"></span>                   
       </mat-toolbar>
 
       <input (change)="fileChangeEvent($event)"  type="file">  
@@ -194,14 +65,83 @@
       </image-cropper>                  
 
       
-    </mat-card>
-    
-    
-    
+    </mat-card>            
   </div>
-
 </div>
 
+
+
+<div class="Main-content movil d-md-none">
+  <div id="Formulario" class="container-fluid justify-content-center text-center" *ngIf="!preview && !animationProces" [@edition]="edition">
+    <mat-card clasS="col-6">
+      <mat-toolbar Class="primary-tool" color="primary">
+        <span>Editar usuario</span>
+        <span class="spacer"></span> 
+        <button mat-icon-button (click)="switchImageEditor()"><mat-icon>image</mat-icon></button>                   
+      </mat-toolbar>
+       
+      <div class="image-input">
+        <img class="image-preview" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
+        <img class="image-preview" *ngIf="userDataPreview.img"  src="{{croppedImage?croppedImage:host+userData.img}}" >
+      </div>
+      
+
+      <mat-card-content *ngIf="!imageEditorMobile">
+
+        <form  [formGroup]="formG">
+              
+          <mat-form-field>
+            <input formControlName="fullname" matInput placeholder="Nombre" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <input formControlName="work" matInput placeholder="Cargo" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <input formControlName="phone" matInput placeholder="Telefono" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <input formControlName="email" matInput placeholder="Correo" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <input formControlName="linkedin" matInput placeholder="Linkedin" >
+          </mat-form-field>                  
+
+
+        </form>        
+      </mat-card-content>
+
+      <mat-card clasS="col-6" *ngIf="imageEditorMobile">       
+  
+        <input (change)="fileChangeEvent($event)"  type="file">  
+        
+        <image-cropper
+          class="cropper"
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="2/2"
+          format="png"
+          (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoadeds($event)"
+          (cropperReady)="cropperReady()"
+          (loadImageFailed)="loadImageFailed()">
+        </image-cropper>                  
+  
+        
+      </mat-card> 
+
+      <mat-card-actions class="p-5">
+        <button mat-raised-button color="primary" (click)="updateInformation()">Guardar Cambios</button>
+      </mat-card-actions>
+    </mat-card>
+    
+
+      
+  </div>
+</div>
 
 
 

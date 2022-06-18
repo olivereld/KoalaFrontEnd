@@ -1,5 +1,11 @@
 
 
+
+<app-loading
+  *ngIf="!isLoaded"
+></app-loading>
+
+
 <div class="table-content mat-elevation-z8" *ngIf="isLoaded">
   
 
@@ -13,7 +19,7 @@
 
 
 
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table matTableResponsive  [dataSource]="dataSource">
 
     <!-- Name Column -->
     <ng-container matColumnDef="fullname">
@@ -51,7 +57,7 @@
             <mat-icon>qr_code</mat-icon>
             <span>Codigo QR</span>
           </button>
-          <button (click)="checkDetail(element._id)" mat-menu-item>
+          <button (click)="checkDetail(element)" mat-menu-item>
             <mat-icon>visibility</mat-icon>
             <span>Detalles</span>
           </button>

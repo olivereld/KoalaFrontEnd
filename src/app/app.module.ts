@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     ToastrModule.forRoot(),
-    AppRoutingModule,               
+    AppRoutingModule,
+    SharedModule,               
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
