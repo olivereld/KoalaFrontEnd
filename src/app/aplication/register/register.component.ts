@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastMessageService } from 'src/app/consulta/service/toast-message.service';
 import { UsersService } from '../services/users.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -80,6 +81,7 @@ export class RegisterComponent implements OnInit {
               },
               error:(err)=>{
                 console.log(err);
+                this._toast.showInfo('No se pudo guardar el empleado')
                 this.loading.emit();
               },
               complete:()=>{
@@ -92,6 +94,11 @@ export class RegisterComponent implements OnInit {
         },
         error:(err)=>{
           console.log(err);
+          if(err.error.data.code == 11000){
+            this._toast.showInfo('El correo ya esta en uso')
+          }else{
+            this._toast.showInfo('No se pudo guardar el empleado')
+          }
           this.loading.emit();
         }        
       }
