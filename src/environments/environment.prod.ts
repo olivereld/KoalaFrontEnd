@@ -1,5 +1,5 @@
 const PORT = 3500;
-const HOST = 'koala-qr-administrator.herokuapp.com'
+const HOST = 'koala-qr-backend.herokuapp.com'
 const URL_BACKEND = `https://${HOST}/koala/`;
 export const environment = {
   API_URL:`${URL_BACKEND}v1/`,
