@@ -1,15 +1,16 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccessGuard } from './access.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-//o0L0i0v0e0r
 const routes: Routes = [
   { 
     path: '',    
     loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)    
   },  
   { 
-    path: 'dashboard',    
+    path: 'dashboard',  
+    canActivate:[ AccessGuard],
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)    
   },  
   {

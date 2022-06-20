@@ -11,6 +11,8 @@ import { HttpParams } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { CarnetDialogComponent } from '../carnet-dialog/carnet-dialog.component';
 import { DetailsDialogComponent } from '../details-dialog/details-dialog.component';
+import { ConfirmModal } from '../../modals/confirm/confirm.modal';
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 
 
 @Component({
@@ -87,20 +89,47 @@ export class TableComponent implements OnInit {
     this.fillTable(false);
   }
 
-  deleteUser(id:string){
-    this.userService.deleteUser(id).subscribe(
+  deleteUser(id:string,user:any){
+
+    const confirm = this.dialog.open( ConfirmModal,
       {
-        next:(resp)=>{
-          console.log(resp);
-        },
-        error:(err)=>{
-          console.log('no pudo eliminar');
-        },
-        complete:()=>{
-          this.fillTable(true);
-        },
-      }
-    )
+        width: '550px', 
+        height:'auto',
+        data:{
+          message:{
+            message:`Esta seguro que desea eliminar a ${user.fullname}`,
+            btn_1:"Eliminar",
+            btn_2:"Cancelar" 
+          },
+          user:user          
+        }            
+      })
+      confirm.afterClosed().subscribe(result => {
+        if(result){
+          this.isLoaded = false;
+          this.userService.deleteUser(id).subscribe(
+            {
+              next:(resp)=>{
+                this.isLoaded = true;
+                console.log(resp);
+              },
+              error:(err)=>{
+                this.isLoaded = true;
+                console.log('no pudo eliminar');
+              },
+              complete:()=>{
+                this.isLoaded = true;
+                this.fillTable(true);
+              },
+            }
+          )
+        }        
+      });
+
+
+    /**
+     * 
+     */
   }
 
   checkDetail(element:any){

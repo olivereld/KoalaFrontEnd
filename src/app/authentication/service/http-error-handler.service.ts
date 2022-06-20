@@ -10,7 +10,6 @@ export class HttpErrorHandlerService {
 
   loginErrorManager(code:number) {
     try{
-      console.log(code);
       if(code < 500 && code > 0){
         this.toastr.error('Credenciales invalidas','Error al autenticar');
       }else{
@@ -21,9 +20,7 @@ export class HttpErrorHandlerService {
     }
     
   }
-  
   loginErrorEmpyForm(){
     this.toastr.warning('Debe llenar todos los campos para acceder','Atencion')
   }
-
 }

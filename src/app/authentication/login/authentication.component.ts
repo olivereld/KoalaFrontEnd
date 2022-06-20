@@ -44,7 +44,8 @@ export class AuthenticationComponent implements OnInit,AfterViewChecked {
      }
 
   ngOnInit(): void {
-    this.toastr.success('Vista Cargada','close');   
+    sessionStorage.removeItem('user');
+
   }
   ngAfterViewChecked(): void {
     //Called after every check of the component's view. Applies to components only.
@@ -76,16 +77,14 @@ export class AuthenticationComponent implements OnInit,AfterViewChecked {
     this.switchLoading();
     this.validateForm() ? this._authService.login(this.formG.value).subscribe({
       next:(data:any)=>{          
-        sessionStorage.setItem('user',data['data'][0]);
+        sessionStorage.setItem('user',btoa(JSON.stringify(data['data'][0])));
         this.router.navigate(['/dashboard'])
       },
       error:(err)=>{     
         this.switchLoading(); 
-        console.log(err)
         this.errorHandler.loginErrorManager(err.status);          
       },
         complete:()=>{    
-          console.log('completada la solicitud')    
           this.switchLoading();
         }    
       }):this.invalidForm();                     
@@ -107,7 +106,6 @@ export class AuthenticationComponent implements OnInit,AfterViewChecked {
   }
 
   switchLoading(){    
-    console.log(this.loading)
     this.loading = this.loading?false:true;
   }
 

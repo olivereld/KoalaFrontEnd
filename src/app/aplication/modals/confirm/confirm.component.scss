@@ -1,0 +1,30 @@
+.buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: end;
+}
+button{
+  border: none;
+  text-decoration: none;
+  width: 100px;
+  height: auto;
+  padding: 10px;
+  &.delete{
+    color:white;
+    background-color: rgb(201, 83, 83);
+    transition: all 0.3s;
+    &:hover{
+      background-color: rgb(219, 98, 98);
+    }
+  }
+  &.cancel{
+    color:rgb(22, 22, 22);
+    background-color: rgb(226, 226, 226);
+    transition: all 0.3s;
+    &:hover{
+      background-color: rgb(255, 255, 255);
+    }
+  }
+
+}

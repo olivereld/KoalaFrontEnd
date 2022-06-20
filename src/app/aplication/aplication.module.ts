@@ -31,6 +31,7 @@ import { CarnetDialogComponent } from './components/carnet-dialog/carnet-dialog.
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableResponsiveDirective } from '../directives/mat-table-responsive.directive';
 import { DetailsDialogComponent } from './components/details-dialog/details-dialog.component';
+import { ConfirmModal } from './modals/confirm/confirm.modal';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DetailsDialogComponent } from './components/details-dialog/details-dial
     CarnetComponent,
     CarnetDialogComponent,
     MatTableResponsiveDirective,
-    DetailsDialogComponent],
+    DetailsDialogComponent,
+    ConfirmModal],
   imports: [ 
     CommonModule,
     AplicationRoutingModule,
@@ -62,6 +64,7 @@ import { DetailsDialogComponent } from './components/details-dialog/details-dial
     MatToolbarModule,
     MatMenuModule,
     MatSortModule,
+    MatButtonModule,
     
     ReactiveFormsModule,
     FormsModule,
@@ -71,5 +74,6 @@ import { DetailsDialogComponent } from './components/details-dialog/details-dial
   ],
   exports: [MatTableResponsiveDirective],
   providers: [],
+  bootstrap:[TableComponent]
 })
 export class AplicationModule {}

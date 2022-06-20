@@ -86,7 +86,8 @@ export class RegisterComponent implements OnInit {
               },
               complete:()=>{
                 this.loading.emit();
-                //this.returnTable();
+                this._toast.showSucces('Usuario registrado correctamente')
+                this.returnTable();
               }
             }
           )
