@@ -69,25 +69,31 @@ export class RegisterComponent implements OnInit {
     this._userService.createUser(userData).subscribe(
       {
         next:(resp:any)=>{
+          this._toast.showInfo('Informacion guardada, subiendo imagen');
           console.log(resp);
           const userid = resp['data'][0]['data']._id;
           const formData = new FormData();
-          formData.append('img',this.files[0])
-          
-          this._userService.uploadImage(formData,userid).subscribe(
+          formData.append('image',this.files[0]);                           
+          this._userService.uploadImageApi(formData,userid).subscribe(
             {
-              next:(response)=>{
-                console.log(response);
+              next:(response:any)=>{
+                this._userService.updateImage(userid,response['data'].image)
+                .subscribe(
+                  (resp) =>{
+                    console.log('listo' , resp);
+                    this.loading.emit();
+                    this._toast.showSucces('Usuario registrado correctamente')
+                    this.returnTable();
+                  }
+                )
               },
               error:(err)=>{
                 console.log(err);
-                this._toast.showInfo('No se pudo guardar el empleado')
+                this._toast.showInfo('No se pudo guardar La imagen del empleado')
                 this.loading.emit();
               },
               complete:()=>{
-                this.loading.emit();
-                this._toast.showSucces('Usuario registrado correctamente')
-                this.returnTable();
+                
               }
             }
           )

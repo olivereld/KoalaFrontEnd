@@ -23,5 +23,9 @@ export class DetailsDialogComponent implements OnInit {
   close(){
     this.dialogRef.close();
   }
+  transform() {
+    const url = JSON.parse(this.userDataPreview.img).url;
+    return (url);
+  }
 
 }

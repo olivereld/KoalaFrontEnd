@@ -8,7 +8,7 @@
        
       <div class="image-input">
         <img class="image-preview" *ngIf="!userDataPreview.img" src="assets/noimage.webp">
-        <img class="image-preview" *ngIf="userDataPreview.img"  src="{{croppedImage?croppedImage:host+userData.img}}" >
+        <img class="image-preview" *ngIf="userDataPreview.img"  src="{{croppedImage?croppedImage:transform()}}" >
       </div>
       
 

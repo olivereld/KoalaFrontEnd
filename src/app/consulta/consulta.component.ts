@@ -6,6 +6,7 @@ import { EMPLOYE } from './model/data.model';
 import { VCard,VCardEncoding, VCardFormatter } from "ngx-vcard";
 import { MatDialog } from '@angular/material/dialog';
 import { ConsultDialogComponent } from './dialog/consult-dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
@@ -32,7 +33,9 @@ export class ConsultaComponent implements OnInit {
     private userService:UsersService,
     public dialog: MatDialog,
     private router:ActivatedRoute,
-    private enRoute:Router) { 
+    private enRoute:Router,
+    private sanitizer:DomSanitizer
+    ) { 
     this.getUserById();
   }
 
@@ -88,6 +91,11 @@ export class ConsultaComponent implements OnInit {
   getLastName(){
     const longitud = this.userData.fullname.split(' ').length -1;
     return this.userData.fullname.split(' ')[longitud];
+  }
+
+  transform() {
+    const url = JSON.parse(this.userData.img).url;
+    return (url);
   }
 
 }

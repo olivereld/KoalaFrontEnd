@@ -55,7 +55,7 @@
         <mat-menu #menu="matMenu">
           <button (click)="openCarnetQr(element)" mat-menu-item>
             <mat-icon>qr_code</mat-icon>
-            <span>Codigo QR</span>
+            <span>Código QR</span>
           </button>
           <button (click)="checkDetail(element)" mat-menu-item>
             <mat-icon>visibility</mat-icon>
@@ -80,7 +80,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]"
                  [length]="totalElements"                  
                  [pageSize]="limit"
                  (page)="handlePageEvent($event)"
