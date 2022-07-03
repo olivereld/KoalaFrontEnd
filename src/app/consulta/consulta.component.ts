@@ -94,8 +94,13 @@ export class ConsultaComponent implements OnInit {
   }
 
   transform() {
-    const url = JSON.parse(this.userData.img).url;
-    return (url);
+    try{
+      const url = JSON.parse(this.userData.img).url;
+      return (url);
+
+    }catch(err){
+      return 'assets/noimage.webp'
+    }
   }
 
 }
