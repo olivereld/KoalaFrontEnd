@@ -87,10 +87,18 @@ export class EditComponent implements OnInit {
           if(this.croppedImage){
             console.log('Subiendo imagen')
             const formData = new FormData();
-          formData.append('img',base64ToFile(this.croppedImage))
-          this.userService.uploadImage(formData,this.userData._id).subscribe(
+          formData.append('image',base64ToFile(this.croppedImage))
+          this.userService.uploadImageApi(formData,this.userData._id).subscribe(
           {
-            next:(response)=>{
+            next:(response:any)=>{
+              this.userService.updateImage(this.userData._id,response['data'].image)
+                .subscribe(
+                  (resp) =>{
+                    console.log('listo' , resp);
+                    this.loading.emit();                    
+                    this.goBack.emit();
+                  }
+                )
               console.log(response);
             },
             error:(err)=>{
@@ -98,8 +106,7 @@ export class EditComponent implements OnInit {
               this.loading.emit();
             },
             complete:()=>{
-              this.loading.emit();
-              this.goBack.emit();
+              
             }
           })
 
@@ -184,6 +191,17 @@ export class EditComponent implements OnInit {
   }
   loadImageFailed() {
 
+  }
+  transform() {
+    try{
+      const url = JSON.parse(this.userDataPreview.img).url;
+      return (url);
+
+    }catch(err){
+      return 'assets/noimage.webp'
+    }
+
+    
   }
 
 }

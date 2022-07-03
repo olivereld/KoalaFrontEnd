@@ -19,4 +19,5 @@ export interface DialogData {
     onNoClick(): void {
       this.dialogRef.close();
     }
+    
 }

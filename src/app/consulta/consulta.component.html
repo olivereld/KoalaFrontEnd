@@ -6,7 +6,7 @@
     <div class="image-content">
       <div id="wrapper text-center">
         <img class="example-header-image" *ngIf="!userData.img" src="assets/noimage.webp">
-        <img class="example-header-image" *ngIf="userData.img" src="{{host+userData.img}}">
+        <img class="example-header-image" *ngIf="userData.img" src="{{transform()}}">
       </div> 
       <div class="full-name">{{userData.fullname}}</div>  
       <div class="head-work">{{userData.work}}</div>            
@@ -161,4 +161,3 @@
   </div--> 
 
 </div>
-

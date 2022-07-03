@@ -37,8 +37,16 @@ export class UsersService {
     return this._http.post(`${this.api}user/`,user);
   }
 
-  uploadImage(file:FormData,userId:string){
-    
+  uploadImageApi(image64:any,name:string){
+    const options = {
+      headers: new HttpHeaders({
+          'Content-Type': 'multipart/form-data',          
+      })
+    }
+    return this._http.post(`https://api.imgbb.com/1/upload?key=${environment.IMGBB.KEY}&name=${name}`,image64);        
+  }
+
+  uploadImage(file:FormData,userId:string){    
     const options = {
       headers: new HttpHeaders({
           'Content-Type': 'multipart/form-data',          
@@ -48,7 +56,17 @@ export class UsersService {
     return this._http.post(`${this.api}upload/${userId}`,file);
   }
 
+  updateImage(userId:string,imgJson:any){
+    return this._http.put(`${this.api}image/${userId}`,{img:JSON.stringify(imgJson)});
+  }
+
   deleteUser(id:string){
     return this._http.delete(`${this.api}user/${id}`);
   }
+
+  async getBase64(file:any) {    
+    
+      
+    
+ }
 }

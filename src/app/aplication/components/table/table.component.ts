@@ -32,6 +32,7 @@ export class TableComponent implements OnInit {
   
   actualPage = 1;
   limit = 5;
+  
   totalElements = 0;
   paginatorInfo = {
     length:0,
@@ -50,6 +51,13 @@ export class TableComponent implements OnInit {
   }
 
   fillTable(isFirstTime:boolean){
+
+    if(localStorage.getItem('paginationSize') ){
+      let storage:any = localStorage.getItem('paginationSize')
+      this.limit = JSON.parse(storage)['limit'];
+      //this.actualPage = JSON.parse(storage)['page'];
+    }
+
     let parameters:HttpParams = new HttpParams()
     .set('page', this.actualPage)
     .set('limit', this.limit);  
@@ -67,6 +75,8 @@ export class TableComponent implements OnInit {
 
           if(isFirstTime == true)
           this.dataSource.paginator = this.paginator;
+
+          
         },
         error:(err)=>{
           console.log(err)
@@ -79,13 +89,14 @@ export class TableComponent implements OnInit {
   }
   setPaginator(paginationInfo:any){
     this.totalElements = parseInt(paginationInfo.count);
-    this.actualPage = parseInt(paginationInfo.actualPages);
+    this.actualPage    = parseInt(paginationInfo.actualPages);
     this.paginatorInfo['pageSize']  =  parseInt(paginationInfo.totalPages);
   }
   
-  handlePageEvent(event: PageEvent){    
+  handlePageEvent(event: PageEvent){  
     this.actualPage = event.pageIndex+1;
     this.limit      = event.pageSize;
+    localStorage.setItem('paginationSize',JSON.stringify({page:this.actualPage,limit:this.limit}))
     this.fillTable(false);
   }
 
